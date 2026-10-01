@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | ReWear</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="css/responsive.css">
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            ♻️ ReWear
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="marketplace.html">
+                Marketplace
+            </a>
+
+            <a href="swap-requests.html">
+                My Swaps
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+        </nav>
+
+
+        <div class="nav-buttons">
+
+            <button
+                id="logoutBtn"
+                class="secondary-btn">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- Dashboard -->
+
+    <main class="dashboard-page">
+
+
+        <!-- Welcome -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="tag">
+                    MY DASHBOARD
+                </span>
+
+                <h1 id="welcomeName">
+                    Welcome back 👋
+                </h1>
+
+                <p>
+                    Manage your clothing listings,
+                    swaps and ReWear profile.
+                </p>
+
+            </div>
+
+
+            <button
+                id="openListingModal"
+                class="primary-btn">
+
+                + List Clothing
+
+            </button>
+
+        </section>
+
+
+
+        <!-- Statistics -->
+
+        <section class="dashboard-stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👕
+                </div>
+
+                <div>
+
+                    <span>
+                        My Listings
+                    </span>
+
+                    <strong id="listingCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔄
+                </div>
+
+                <div>
+
+                    <span>
+                        Active Swaps
+                    </span>
+
+                    <strong>
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <span>
+                        Completed Swaps
+                    </span>
+
+                    <strong>
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📍
+                </div>
+
+                <div>
+
+                    <span>
+                        Location
+                    </span>
+
+                    <strong id="userLocation">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Dashboard Content -->
+
+        <section class="dashboard-content">
+
+
+            <!-- My Listings -->
+
+            <div class="dashboard-main">
+
+                <div class="dashboard-section-header">
+
+                    <div>
+
+                        <h2>
+                            My Clothing Listings
+                        </h2>
+
+                        <p>
+                            Items currently available
+                            for swapping.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="openListingModal2"
+                        class="secondary-btn">
+
+                        + Add Item
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="myListings"
+                    class="my-listings">
+
+                </div>
+
+
+                <div
+                    id="emptyListings"
+                    class="empty-state">
+
+                    <div>
+                        👕
+                    </div>
+
+                    <h3>
+                        No listings yet
+                    </h3>
+
+                    <p>
+                        Add your first clothing item
+                        and start swapping.
+                    </p>
+
+                    <button
+                        id="emptyAddBtn"
+                        class="primary-btn">
+
+                        Add Clothing
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Profile -->
+
+            <aside class="profile-card">
+
+                <div class="profile-avatar">
+                    👤
+                </div>
+
+
+                <h3 id="profileName">
+                    User
+                </h3>
+
+
+                <p id="profileEmail">
+                    user@example.com
+                </p>
+
+
+                <div class="profile-detail">
+
+                    <span>
+                        📍 Location
+                    </span>
+
+                    <strong id="profileLocation">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-detail">
+
+                    <span>
+                        📅 Member Since
+                    </span>
+
+                    <strong id="profileJoined">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="marketplace.html"
+                    class="primary-btn profile-btn">
+
+                    Browse Marketplace
+
+                </a>
+
+            </aside>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Add Listing Modal -->
+
+    <div
+        id="listingModal"
+        class="modal-overlay hidden">
+
+
+        <div class="listing-modal">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        List Your Clothing
+                    </h2>
+
+                    <p>
+                        Add details about your item.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="closeModal"
+                    class="close-modal">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+
+            <form id="listingForm">
+
+
+                <!-- Item Name -->
+
+                <div class="form-group">
+
+                    <label for="itemName">
+                        Clothing Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="itemName"
+                        placeholder="Example: Zara Denim Jacket"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Brand + Category -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="itemBrand">
+                            Brand
+                        </label>
+
+                        <input
+                            type="text"
+                            id="itemBrand"
+                            placeholder="Example: Zara"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="itemCategory">
+                            Category
+                        </label>
+
+                        <select
+                            id="itemCategory"
+                            required>
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="T-Shirt">
+                                T-Shirt
+                            </option>
+
+                            <option value="Jeans">
+                                Jeans
+                            </option>
+
+                            <option value="Jacket">
+                                Jacket
+                            </option>
+
+                            <option value="Dress">
+                                Dress
+                            </option>
+
+                            <option value="Shirt">
+                                Shirt
+                            </option>
+
+                            <option value="Kurta">
+                                Kurta
+                            </option>
+
+                            <option value="Shoes">
+                                Shoes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Size + Condition -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="itemSize">
+                            Size
+                        </label>
+
+                        <select
+                            id="itemSize"
+                            required>
+
+                            <option value="">
+                                Select Size
+                            </option>
+
+                            <option value="XS">
+                                XS
+                            </option>
+
+                            <option value="S">
+                                S
+                            </option>
+
+                            <option value="M">
+                                M
+                            </option>
+
+                            <option value="L">
+                                L
+                            </option>
+
+                            <option value="XL">
+                                XL
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="itemCondition">
+                            Condition
+                        </label>
+
+                        <select
+                            id="itemCondition"
+                            required>
+
+                            <option value="">
+                                Select Condition
+                            </option>
+
+                            <option value="Like New">
+                                Like New
+                            </option>
+
+                            <option value="Excellent">
+                                Excellent
+                            </option>
+
+                            <option value="Good">
+                                Good
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Location -->
+
+                <div class="form-group">
+
+                    <label for="itemLocation">
+                        Location
+                    </label>
+
+                    <select
+                        id="itemLocation"
+                        required>
+
+                        <option value="">
+                            Select Location
+                        </option>
+
+                        <option value="Mumbai">
+                            Mumbai
+                        </option>
+
+                        <option value="Pune">
+                            Pune
+                        </option>
+
+                        <option value="Nashik">
+                            Nashik
+                        </option>
+
+                        <option value="Thane">
+                            Thane
+                        </option>
+
+                        <option value="Bengaluru">
+                            Bengaluru
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Value -->
+
+                <div class="form-group">
+
+                    <label for="itemValue">
+                        Estimated Swap Value (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="itemValue"
+                        placeholder="Example: 1500"
+                        min="100"
+                        required
+                    >
+
+                    <small>
+                        Enter a reasonable estimated
+                        exchange value.
+                    </small>
+
+                </div>
+
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <label for="itemDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="itemDescription"
+                        rows="4"
+                        placeholder="Describe the item, fabric, fit and usage..."
+                        required>
+                    </textarea>
+
+                </div>
+
+
+
+                <!-- Form Message -->
+
+                <div
+                    id="listingMessage"
+                    class="form-message">
+                </div>
+
+
+
+                <!-- Buttons -->
+
+                <div class="modal-buttons">
+
+                    <button
+                        type="button"
+                        id="cancelListing"
+                        class="secondary-btn">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn">
+
+                        Save Listing
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="js/listing.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Panel | ReWear</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            ♻️ ReWear Admin
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="marketplace.html">
+                Marketplace
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="admin.html">
+                Admin Panel
+            </a>
+
+        </nav>
+
+        <div class="nav-buttons">
+
+            <button
+                class="login-btn"
+                onclick="adminLogout()"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Admin Login -->
+
+    <section
+        id="adminLogin"
+        class="admin-login-section"
+    >
+
+        <div class="admin-login-card">
+
+            <span class="tag">
+                ADMIN ACCESS
+            </span>
+
+            <h1>
+                ReWear Admin Panel
+            </h1>
+
+            <p>
+                Sign in to manage users, listings
+                and swap activity.
+            </p>
+
+
+            <form id="adminLoginForm">
+
+                <div class="filter-group">
+
+                    <label for="adminEmail">
+                        Admin Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        placeholder="admin@rewear.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="adminPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Login as Admin
+                </button>
+
+
+                <p
+                    id="adminLoginMessage"
+                    class="form-message"
+                ></p>
+
+            </form>
+
+
+            <!-- Demo Credentials -->
+
+            <div class="admin-demo-info">
+
+                <strong>
+                    Demo Admin
+                </strong>
+
+                <p>
+                    Email: admin@rewear.com
+                </p>
+
+                <p>
+                    Password: admin123
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Admin Dashboard -->
+
+    <main
+        id="adminDashboard"
+        class="admin-dashboard hidden"
+    >
+
+
+        <!-- Admin Header -->
+
+        <section class="admin-header">
+
+            <div>
+
+                <span class="tag">
+                    ADMIN DASHBOARD
+                </span>
+
+                <h1>
+                    ReWear Management Panel
+                </h1>
+
+                <p>
+                    Monitor marketplace activity
+                    and manage the ReWear community.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Statistics -->
+
+        <section class="admin-stats">
+
+
+            <!-- Users -->
+
+            <div class="admin-stat-card">
+
+                <span>
+                    👥
+                </span>
+
+                <h2 id="totalUsers">
+                    0
+                </h2>
+
+                <p>
+                    Total Users
+                </p>
+
+            </div>
+
+
+            <!-- Listings -->
+
+            <div class="admin-stat-card">
+
+                <span>
+                    👕
+                </span>
+
+                <h2 id="totalListings">
+                    0
+                </h2>
+
+                <p>
+                    Total Listings
+                </p>
+
+            </div>
+
+
+            <!-- Swaps -->
+
+            <div class="admin-stat-card">
+
+                <span>
+                    🔄
+                </span>
+
+                <h2 id="totalSwaps">
+                    0
+                </h2>
+
+                <p>
+                    Total Swaps
+                </p>
+
+            </div>
+
+
+            <!-- Completed -->
+
+            <div class="admin-stat-card">
+
+                <span>
+                    ✅
+                </span>
+
+                <h2 id="completedSwaps">
+                    0
+                </h2>
+
+                <p>
+                    Completed Swaps
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Users -->
+
+        <section class="admin-section">
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        USER MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Registered Users
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            <th>
+                                Listings
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="usersTableBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Clothing Listings -->
+
+        <section class="admin-section">
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        LISTING MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Clothing Listings
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Item
+                            </th>
+
+                            <th>
+                                Owner
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            <th>
+                                Value
+                            </th>
+
+                            <!-- NEW -->
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listingsTableBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Swap Requests -->
+
+        <section class="admin-section">
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        SWAP MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Swap Requests
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Requester
+                            </th>
+
+                            <th>
+                                Owner
+                            </th>
+
+                            <th>
+                                Offered Item
+                            </th>
+
+                            <th>
+                                Requested Item
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="swapsTableBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Analytics -->
+
+        <section class="admin-section">
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        ANALYTICS
+                    </span>
+
+                    <h2>
+                        Marketplace Overview
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-grid">
+
+
+                <!-- Available Listings -->
+
+                <div class="analytics-card">
+
+                    <h3>
+                        Available Listings
+                    </h3>
+
+                    <p id="availableListings">
+                        0
+                    </p>
+
+                </div>
+
+
+                <!-- Pending Swaps -->
+
+                <div class="analytics-card">
+
+                    <h3>
+                        Pending Requests
+                    </h3>
+
+                    <p id="pendingSwaps">
+                        0
+                    </p>
+
+                </div>
+
+
+                <!-- Accepted Swaps -->
+
+                <div class="analytics-card">
+
+                    <h3>
+                        Accepted Swaps
+                    </h3>
+
+                    <p id="acceptedSwaps">
+                        0
+                    </p>
+
+                </div>
+
+
+                <!-- Disputed Swaps -->
+
+                <div class="analytics-card">
+
+                    <h3>
+                        Disputed Swaps
+                    </h3>
+
+                    <p id="disputedSwaps">
+                        0
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <!-- Brand -->
+
+            <div>
+
+                <h2>
+                    ♻️ ReWear
+                </h2>
+
+                <p>
+                    Swap more. Waste less.
+                    Wear again.
+                </p>
+
+            </div>
+
+
+            <!-- Admin -->
+
+            <div>
+
+                <h4>
+                    Admin
+                </h4>
+
+                <a href="admin.html">
+                    Admin Panel
+                </a>
+
+                <a href="marketplace.html">
+                    Marketplace
+                </a>
+
+            </div>
+
+
+            <!-- Account -->
+
+            <div>
+
+                <h4>
+                    Account
+                </h4>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 ReWear. Admin Management Panel.
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/admin.js"></script>
+
+</body>
+
+</html>

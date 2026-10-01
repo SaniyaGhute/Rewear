@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Marketplace | ReWear</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            ♻️ ReWear
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="marketplace.html">Marketplace</a>
+            <a href="swap-requests.html">My Swaps</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+
+        <div class="nav-buttons">
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+            <a href="register.html" class="primary-btn">
+                Join ReWear
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- Marketplace Header -->
+
+    <section class="marketplace-header">
+
+        <div>
+
+            <span class="tag">
+                REWEAR MARKETPLACE
+            </span>
+
+            <h1>
+                Find something worth swapping.
+            </h1>
+
+            <p>
+                Discover pre-loved clothing from people
+                in your community and exchange items
+                instead of buying new ones.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Location Suggestions -->
+
+    <section class="location-suggestions">
+
+        <div class="container">
+
+            <div class="location-suggestion-header">
+
+                <div>
+
+                    <span class="section-label">
+                        LOCATION MATCHING
+                    </span>
+
+                    <h2>
+                        Listings Near You
+                    </h2>
+
+                    <p>
+                        Discover clothing available
+                        in your city and nearby areas.
+                    </p>
+
+                </div>
+
+                <div
+                    id="userLocationDisplay"
+                    class="user-location-display">
+                </div>
+
+            </div>
+
+
+            <div
+                id="nearbyListings"
+                class="listing-grid">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Marketplace -->
+
+    <main class="marketplace-container">
+
+
+        <!-- Filters -->
+
+        <aside class="filters">
+
+            <div class="filter-heading">
+
+                <h3>
+                    Filters
+                </h3>
+
+                <button id="clearFilters">
+                    Clear
+                </button>
+
+            </div>
+
+
+            <!-- Location Match -->
+
+            <div class="filter-group">
+
+                <label for="locationMatch">
+                    Location Match
+                </label>
+
+                <select id="locationMatch">
+
+                    <option value="">
+                        All Locations
+                    </option>
+
+                    <option value="same">
+                        Same City
+                    </option>
+
+                    <option value="nearby">
+                        Nearby Cities
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Search -->
+
+            <div class="filter-group">
+
+                <label for="searchInput">
+                    Search
+                </label>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search clothing..."
+                >
+
+            </div>
+
+
+            <!-- Category -->
+
+            <div class="filter-group">
+
+                <label for="categoryFilter">
+                    Category
+                </label>
+
+                <select id="categoryFilter">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="T-Shirt">
+                        T-Shirts
+                    </option>
+
+                    <option value="Jeans">
+                        Jeans
+                    </option>
+
+                    <option value="Jacket">
+                        Jackets
+                    </option>
+
+                    <option value="Dress">
+                        Dresses
+                    </option>
+
+                    <option value="Shirt">
+                        Shirts
+                    </option>
+
+                    <option value="Kurta">
+                        Kurtas
+                    </option>
+
+                    <option value="Shoes">
+                        Shoes
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Size -->
+
+            <div class="filter-group">
+
+                <label for="sizeFilter">
+                    Size
+                </label>
+
+                <select id="sizeFilter">
+
+                    <option value="all">
+                        All Sizes
+                    </option>
+
+                    <option value="XS">
+                        XS
+                    </option>
+
+                    <option value="S">
+                        S
+                    </option>
+
+                    <option value="M">
+                        M
+                    </option>
+
+                    <option value="L">
+                        L
+                    </option>
+
+                    <option value="XL">
+                        XL
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Condition -->
+
+            <div class="filter-group">
+
+                <label for="conditionFilter">
+                    Condition
+                </label>
+
+                <select id="conditionFilter">
+
+                    <option value="all">
+                        All Conditions
+                    </option>
+
+                    <option value="Like New">
+                        Like New
+                    </option>
+
+                    <option value="Excellent">
+                        Excellent
+                    </option>
+
+                    <option value="Good">
+                        Good
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Location -->
+
+            <div class="filter-group">
+
+                <label for="locationFilter">
+                    Location
+                </label>
+
+                <select id="locationFilter">
+
+                    <option value="all">
+                        All Locations
+                    </option>
+
+                    <option value="Mumbai">
+                        Mumbai
+                    </option>
+
+                    <option value="Pune">
+                        Pune
+                    </option>
+
+                    <option value="Nashik">
+                        Nashik
+                    </option>
+
+                    <option value="Thane">
+                        Thane
+                    </option>
+
+                    <option value="Bengaluru">
+                        Bengaluru
+                    </option>
+
+                </select>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Listings -->
+
+        <section class="listings-section">
+
+            <div class="listing-topbar">
+
+                <div>
+
+                    <h2>
+                        Available Clothes
+                    </h2>
+
+                    <p id="resultCount">
+                        Showing listings
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <select id="sortFilter">
+
+                        <option value="default">
+                            Sort: Recommended
+                        </option>
+
+                        <option value="low">
+                            Swap Value: Low to High
+                        </option>
+
+                        <option value="high">
+                            Swap Value: High to Low
+                        </option>
+
+                        <option value="newest">
+                            Newest First
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- Listing Grid -->
+
+            <div
+                id="listingGrid"
+                class="listing-grid">
+            </div>
+
+
+            <!-- No Results -->
+
+            <div
+                id="noResults"
+                class="no-results hidden">
+
+                <div>
+                    🔍
+                </div>
+
+                <h3>
+                    No clothing found
+                </h3>
+
+                <p>
+                    Try changing your search or filters.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+
+                <h2>
+                    ♻️ ReWear
+                </h2>
+
+                <p>
+                    Swap more. Waste less.
+                    Wear again.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Marketplace
+                </h4>
+
+                <a href="marketplace.html">
+                    Browse Clothes
+                </a>
+
+                <a href="create-listing.html">
+                    List an Item
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Account
+                </h4>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 ReWear. Clothing Exchange Marketplace.
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/data.js"></script>
+    <script src="js/marketplace.js"></script>
+
+</body>
+
+</html>
